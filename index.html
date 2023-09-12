@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+    <label for="myYear">Év kiválasztása: </label>
+    <input type="number" onchange="setYear()" id="myYear" value="2000" min="2000" max="2020">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <canvas id="myChart"></canvas>
+    <script src="data.js"></script>
+    
+    <script>
+            let myChart = null;
+
+const setYear = () => {
+    var myYear = document.getElementById("myYear").value;
+    var changeYear = parseInt(myYear, 10);
+    var yearData = data.find(item => item.Year === changeYear);
+    const categoryLabels = Object.keys(yearData).slice(1, -2);
+    const categoryValues = categoryLabels.map(label => yearData[label]);
+
+    // Check if myChart is initialized and not null
+    if (myChart) {
+        myChart.destroy();
+    }
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: categoryLabels,
+            datasets: [{
+                label: changeYear + " év adatai",
+                data: categoryValues,
+                backgroundColor: 'rgb(65, 105, 225, 0.6)',  // You can change the color
+                borderColor: 'rgba(65, 105, 225, 1)', // You can change the border color
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+setYear();
+    </script>
+</body>
+</html>

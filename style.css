@@ -1,0 +1,13 @@
+#myChart {
+    transform: scale(0.8);
+    color: rgb(65, 105, 225);
+}
+
+.container {
+
+    margin: auto;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 250px;
+}
