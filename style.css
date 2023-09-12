@@ -3,6 +3,11 @@
     color: rgb(65, 105, 225);
 }
 
+body {
+    transition: all;
+    transition-duration: 0.5s;
+}
+
 .container {
 
     margin: auto;
@@ -10,4 +15,8 @@
     display: grid;
     grid-template-columns: 50% 50%;
     width: 250px;
+}
+
+h2 {
+    text-align: center;
 }
