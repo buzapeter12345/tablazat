@@ -9,8 +9,9 @@
 <body>
     <h2>Az iskolarendszeren kívüli szakmai képzésre beiratkozottak képzési terület szerint</h2>
     <div class="container">
-    <label for="myYear">Év kiválasztása: </label>
-    <input type="number" onchange="setYear()" id="myYear" value="2000" min="2000" max="2020">
+    <div class="input-wrapper">
+        <input class="input" name="text" type="number" onchange="setYear()" id="myYear" value="2000" min="2000" max="2020">
+    </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <canvas id="myChart"></canvas>
@@ -26,7 +27,6 @@ const setYear = () => {
     const categoryLabels = Object.keys(yearData).slice(1, -2);
     const categoryValues = categoryLabels.map(label => yearData[label]);
 
-    // Check if myChart is initialized and not null
     if (myChart) {
         myChart.destroy();
     }
